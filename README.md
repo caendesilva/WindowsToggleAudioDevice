@@ -4,7 +4,7 @@ PowerShell script to toggle between two Windows audio output devices from the co
 
 ## Installation:
 
-### Install `AudioDeviceCmdlets` Module
+### Install [`AudioDeviceCmdlets`](https://github.com/frgnca/AudioDeviceCmdlets) Module
 
 1. **Open PowerShell as Administrator**:
    - Press `Win + X` and select `Windows PowerShell (Admin)` or search for PowerShell in the Start menu and right-click to run it as administrator.
@@ -24,11 +24,11 @@ PowerShell script to toggle between two Windows audio output devices from the co
 
 This command will list all audio devices with their IDs and names.
 
-### Download ToggleAudioDevice.ps1
+### Download `ToggleAudioDevice.ps1`
 
 Next, download the `ToggleAudioDevice.ps1` file from GitHub, preferably into your `$PATH`.
 
-### Configure ToggleAudioDevice.ps1
+### Configure `ToggleAudioDevice.ps1`
 
 Now, open the `ToggleAudioDevice.ps1` file and define the speaker names found in the list above.
 
