@@ -1,34 +1,27 @@
 Import-Module AudioDeviceCmdlets
 
-# Define the names of your devices
-$device1 = "Speakers"
-$device2 = "Headphones"
+# Define the indices of your devices
+$device1Index = 3
+$device2Index = 4
 
-# Get the current default audio playback device
-$currentDevice = (Get-AudioDevice -Playback | Where-Object { $_.Default -eq "True" }).Name
+# Get the current default audio playback device index
+$currentDeviceIndex = (Get-AudioDevice -Playback | Where-Object { $_.Default -eq "True" }).Index
 
-Write-Host "Current device: $currentDevice"
+Write-Host "Current device index: $currentDeviceIndex"
 
-# Function to set the default audio playback device
-function Set-DefaultAudioDevice {
+# Function to set the default audio playback device by index
+function Set-DefaultAudioDeviceByIndex {
     param (
-        [string]$deviceName
+        [int]$deviceIndex
     )
 
-    $device = Get-AudioDevice -Playback | Where-Object { $_.Name -eq $deviceName }
-    if ($device) {
-        Set-DefaultAudioDevice -PlaybackDevice $device
-        Write-Host "Switched to $deviceName"
-    } else {
-        Write-Host "Device '$deviceName' not found."
-    }
+    Set-AudioDevice -Index $deviceIndex
+    Write-Host "Switched to device index $deviceIndex."
 }
 
 # Toggle the default audio playback device
-if ($currentDevice -eq $device1) {
-    Set-DefaultAudioDevice -deviceName $device2
+if ($currentDeviceIndex -eq $device1Index) {
+    Set-DefaultAudioDeviceByIndex -deviceIndex $device2Index
 } else {
-    Set-DefaultAudioDevice -deviceName $device1
+    Set-DefaultAudioDeviceByIndex -deviceIndex $device1Index
 }
-
-Write-Host "Audio device switched."
